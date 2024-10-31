@@ -1,0 +1,45 @@
+Here’s a breakdown of the main points covered in this lecture:
+
+1. **Introduction to Property Binding**:
+   - Property binding is used for one-way data binding, similar to string interpolation.
+   - It allows binding a DOM property to a value in the component class, useful for manipulating DOM elements dynamically.
+
+2. **String Interpolation vs. Property Binding**:
+   - String interpolation is ideal for displaying data within HTML.
+   - Property binding is used for assigning dynamic values to HTML element attributes, allowing direct control over DOM properties.
+
+3. **Example with Image Display**:
+   - Instead of hardcoding the `src` attribute, an image file path is stored in a component property.
+   - This path is then bound to the `src` attribute using property binding syntax with square brackets `[ ]`.
+
+4. **Enabling/Disabling a Button Dynamically**:
+   - A button is set to be disabled or enabled based on a product’s stock status.
+   - The `disabled` attribute uses property binding with a condition, checking if the stock is greater than zero.
+
+5. **Why Property Binding Over String Interpolation?**:
+   - String interpolation cannot handle attributes like `disabled`, `hidden`, or `checked`.
+   - Property binding is required for these attributes to work as expected.
+
+6. **Example with Dynamic Input Value**:
+   - A `value` attribute of an input element is bound to a `name` property from the component.
+   - This demonstrates dynamic assignment using property binding.
+
+7. **Alternative Syntax with `bind`**:
+   - Instead of using square brackets `[ ]` for property binding, you can also use `bind-attribute-name`.
+   - This syntax is valid but less common than using square brackets.
+
+8. **Attribute Binding for Non-Property Attributes**:
+   - Attributes such as `aria-hidden` or `data-*` attributes are not DOM properties and must use attribute binding.
+   - Syntax: `attr.attribute-name` (e.g., `attr.aria-hidden`) to bind such attributes dynamically.
+
+9. **Difference Between HTML Attributes and Properties**:
+   - HTML attributes represent the initial value and do not change.
+   - Properties reflect the current state and can change during runtime.
+
+10. **Using `attr.` for Accessibility and Data Attributes**:
+    - Accessibility attributes like `aria-label`, `aria-expanded`, and `data-*` attributes should use attribute binding.
+    - This avoids errors that arise when binding these attributes directly as properties. 
+
+11. **Summary and Conclusion**:
+    - Property binding allows dynamic control of HTML attributes, while attribute binding is required for non-DOM properties.
+    - Practice these concepts with examples and ask questions if needed.

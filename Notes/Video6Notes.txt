@@ -1,0 +1,29 @@
+Here are the important points listed in ascending order without timestamps:
+
+1. Angular is used to create dynamic and interactive client-side applications using HTML, CSS, and a client-side programming language like TypeScript or JavaScript.
+
+2. TypeScript is a free and open-source programming language developed by Microsoft and is a superset of JavaScript.
+
+3. Any valid JavaScript code is also valid TypeScript code.
+
+4. Browsers do not understand TypeScript; it gets converted into JavaScript when compiled.
+
+5. Compiled JavaScript can be executed by browsers.
+
+6. TypeScript has advantages over JavaScript:
+   - Strongly typed vs. dynamically typed.
+   - Variables in JavaScript are dynamically typed; their type is determined by the assigned value.
+
+7. In TypeScript, you can explicitly specify data types for variables, helping to avoid bugs.
+
+8. Specifying variable types in TypeScript is optional; not specifying behaves like JavaScript.
+
+9. Explicitly specifying types makes applications more predictable and easier to debug.
+
+10. TypeScript includes object-oriented features such as interfaces, access modifiers, fields, properties, and generics, which are not present in current JavaScript.
+
+11. TypeScript allows for catching errors at compile time rather than at runtime.
+
+12. Knowing JavaScript helps in understanding TypeScript concepts; most TypeScript concepts are familiar to JavaScript developers.
+
+13. A separate course on TypeScript will be created, covering everything from beginner to advanced levels.

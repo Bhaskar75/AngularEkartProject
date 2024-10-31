@@ -1,0 +1,31 @@
+Here are the key points from the lecture in a numbered format:
+
+1. **Introduction to Bootstrap**:
+   - Bootstrap is a responsive, mobile-first CSS framework with features like a responsive grid system, pre-built components, JavaScript plugins, and more.
+   - It requires both CSS and JavaScript files, with dependencies on jQuery and Popper.js for certain components like dropdown menus.
+
+2. **Installing Bootstrap in Angular**:
+   - Instead of using the CDN link in `index.html`, Bootstrap can be installed via npm for better integration.
+   - To install, open the terminal (or command prompt) in the project directory and run: `npm install --save bootstrap`.
+
+3. **Verifying Bootstrap Installation**:
+   - Once installed, Bootstrap files are located in the `node_modules` folder under `node_modules/bootstrap/dist/`.
+
+4. **Using Bootstrap’s CSS in Angular**:
+   - There are two ways to add Bootstrap’s CSS:
+     - **Method 1**: Add the Bootstrap CSS file path in `angular.json` under the `styles` array.
+     - **Method 2**: Import Bootstrap in `styles.css` using `@import` and specifying the file path.
+
+5. **Rebuilding the Angular Project**:
+   - After installing Bootstrap, restart the Angular development server using `ng serve` to recompile and apply the changes.
+
+6. **Testing Bootstrap Integration**:
+   - Verify if Bootstrap is working by adding a Bootstrap component (e.g., button) in `app.component.html` and checking if the styling is applied.
+
+7. **Removing Bootstrap**:
+   - If Bootstrap is no longer needed, uninstall it using `npm uninstall bootstrap`, which removes Bootstrap files from `node_modules`.
+
+8. **Reference for Bootstrap Documentation**:
+   - For detailed usage and examples of Bootstrap components, refer to the official Bootstrap documentation.
+
+These steps cover how to install, use, and uninstall Bootstrap in an Angular project.

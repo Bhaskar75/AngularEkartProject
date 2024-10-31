@@ -1,0 +1,33 @@
+Certainly! Here's the summary in a numbered format:
+
+1. **Setting Up Styling**: Angular provides two properties in the `@Component` decorator for styling a view template:
+   - `styles`: Used to directly write CSS within the component.
+   - `styleUrls`: Used to reference external CSS files.
+
+2. **Using `styles` Property**:
+   - This property takes an array of strings where each string represents CSS styles.
+   - Example: To style an anchor and a button, write CSS directly inside the array.
+   - **Limitations of `styles`**:
+     1. Mixing CSS with TypeScript makes the code less maintainable.
+     2. CSS errors (e.g., syntax issues) are not caught during compilation, only at runtime.
+     3. Large amounts of CSS make the array long and difficult to manage.
+
+3. **Using `styleUrls` Property**:
+   - To keep CSS separate from TypeScript, use `styleUrls` and reference a separate CSS file.
+   - **Steps**:
+     1. Create a new CSS file, such as `header.component.css`, in the component’s folder.
+     2. Reference this file in the `styleUrls` array of the component’s decorator.
+   - **Advantages**:
+     1. Keeps CSS separate, improving code readability and maintainability.
+     2. CSS files can be reused across components if needed.
+
+4. **Component-Specific Styles**:
+   - Styles defined in `styleUrls` only apply to that component’s view template.
+   - Example: Styles set in `app.component.css` won’t affect elements within `header.component.html` (a child component), unlike in React.
+
+5. **Summary**:
+   - Use `styles` for small, inline styling or testing.
+   - Use `styleUrls` for more complex and maintainable CSS.
+   - Styles in `styleUrls` apply only to the component they are specified for, promoting style encapsulation. 
+
+This concludes the lecture on styling Angular view templates using `styles` and `styleUrls`.

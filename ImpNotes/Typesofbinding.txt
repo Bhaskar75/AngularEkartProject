@@ -1,0 +1,104 @@
+In Angular, there are four main types of data binding:
+
+1. **Interpolation**  
+2. **Property Binding**  
+3. **Event Binding**  
+4. **Two-way Binding**
+
+Here’s a breakdown of each type with examples:
+
+---
+
+### 1. Interpolation
+**Syntax:** `{{ expression }}`
+
+Interpolation allows you to bind data from the component directly to the view by evaluating expressions and outputting their result as text.
+
+**Example:**
+```typescript
+// app.component.ts
+title: string = 'Welcome to Angular!';
+```
+
+```html
+<!-- app.component.html -->
+<h1>{{ title }}</h1>
+```
+
+**Explanation:** Here, `{{ title }}` will display the value of the `title` property in the HTML.
+
+---
+
+### 2. Property Binding
+**Syntax:** `[property]="expression"`
+
+Property binding binds a component property to an HTML element’s property. The property in the HTML element is set to the value of the component's property.
+
+**Example:**
+```typescript
+// app.component.ts
+imageUrl: string = 'https://example.com/image.jpg';
+```
+
+```html
+<!-- app.component.html -->
+<img [src]="imageUrl">
+```
+
+**Explanation:** The `src` attribute of the `<img>` tag is bound to `imageUrl`. Whenever `imageUrl` changes, the `src` attribute of the `<img>` element will update automatically.
+
+---
+
+### 3. Event Binding
+**Syntax:** `(event)="expression"`
+
+Event binding allows you to respond to user actions, like clicks or keypresses, by calling methods in the component.
+
+**Example:**
+```typescript
+// app.component.ts
+buttonClicked() {
+  console.log('Button was clicked!');
+}
+```
+
+```html
+<!-- app.component.html -->
+<button (click)="buttonClicked()">Click me!</button>
+```
+
+**Explanation:** Here, `(click)="buttonClicked()"` binds the `click` event of the button to the `buttonClicked()` method in the component. When the button is clicked, `buttonClicked()` is executed.
+
+---
+
+### 4. Two-way Binding
+**Syntax:** `[(ngModel)]="property"`
+
+Two-way binding allows data to flow in both directions, keeping the component and view in sync. Angular’s `ngModel` directive enables two-way binding, especially useful for form inputs.
+
+**Example:**
+```typescript
+// app.component.ts
+name: string = '';
+```
+
+```html
+<!-- app.component.html -->
+<input [(ngModel)]="name">
+<p>Your name is: {{ name }}</p>
+```
+
+**Explanation:** Here, `[(ngModel)]="name"` binds the `name` property in both directions. Changes to the input field automatically update the `name` property, and changes to `name` update the input field’s value.
+
+---
+
+### Summary Table
+
+| Binding Type         | Syntax                   | Direction       | Use Case                          |
+|----------------------|--------------------------|-----------------|-----------------------------------|
+| **Interpolation**    | `{{ expression }}`       | Component → View| Displaying component data         |
+| **Property Binding** | `[property]="expression"`| Component → View| Binding to HTML element properties|
+| **Event Binding**    | `(event)="expression"`   | View → Component| Handling user actions             |
+| **Two-way Binding**  | `[(ngModel)]="property"` | Both           | Synchronizing form fields         |
+
+Each type of binding serves a specific purpose and helps create dynamic, responsive UIs in Angular.

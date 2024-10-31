@@ -1,0 +1,28 @@
+Here are the important points from the lecture on view templates in Angular, listed in numbering format:
+
+1. To use a component, we use its selector like an HTML element, which renders HTML known as the view template of the component.
+
+2. The view template is HTML that defines how Angular should render a component.
+
+3. When creating a component, we specify its view template using the `template` property, especially when there are only a few lines of HTML.
+
+4. Using the `template` property is practical when we have two or three lines of HTML.
+
+5. For larger amounts of HTML, using `template` can be cumbersome, making it preferable to use `templateUrl`.
+
+6. `templateUrl` allows us to specify the path of an HTML file that serves as the view template for the component.
+
+7. To use `templateUrl`, create an HTML file in the same folder as the component and provide its path in the `templateUrl` property.
+
+8. The HTML content from the specified HTML file will render wherever the component's selector is used.
+
+9. `template` property disadvantages:
+   - It mixes TypeScript and HTML in the same file, making the code less maintainable.
+   - HTML written as a string means errors (e.g., missing closing tags) are only visible during runtime, not at compile time.
+   - A large amount of HTML can make the code messy and harder to manage.
+
+10. `templateUrl` is preferred for maintainability and separation of HTML and TypeScript, even if the HTML code is only a few lines long.
+
+11. In this lecture, two ways of creating a view template were covered: using `template` and using `templateUrl` in the `@Component` decorator.
+
+12. The next lecture will cover how to style a component's view template.

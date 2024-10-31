@@ -1,0 +1,31 @@
+1. Assets Folder Accessibility
+Any files or folders placed inside the src/assets folder are publicly accessible via the browser.
+For example, if you place an image named planet.jpg inside src/assets/images/, you can access it in the browser using:
+bash
+Copy code
+http://localhost:4200/assets/images/planet.jpg
+
+2. Assets Outside the assets Folder
+Only files inside the src/assets folder are publicly accessible by default.
+If you move planet.jpg to another folder, such as src/app/, and try to access it using http://localhost:4200/app/planet.jpg, the browser won't render the image because Angular doesn't serve files from the app folder or other directories unless specifically configured.
+Why?
+
+The assets folder is configured in angular.json to serve static files, while the app folder contains Angular components, services, and other code, which isn’t meant to be directly accessible via the browser.
+3. Correct Usage of the Favicon (Web Icon)
+The favicon.ico is a simple icon file that appears in the browser tab when your application runs. You can replace it with your own favicon by placing a new .ico file in the src/ directory and making sure the reference is correct in index.html.
+
+4. Main Files: index.html and main.ts
+index.html: This is the main HTML file where the Angular app is bootstrapped. Dependencies like stylesheets and scripts are injected automatically during the build process, which is why you don’t see explicit references to styles or scripts in it.
+main.ts: This file is the entry point of your Angular application. It bootstraps the Angular application by loading the root module (AppModule) and starting the Angular app.
+
+5. Global Styles vs Component Styles
+styles.css (Global Styles): This file contains global styles that are applied across the entire application.
+Component-specific CSS: Each component can have its own CSS file (e.g., app.component.css), and the styles defined in these files are scoped to the respective component. They won't affect other components.
+Summary of Key Points:
+Assets folder (src/assets/) is for public resources like images, icons, etc.
+Accessible in the browser via /assets/your-file.
+Files placed outside the assets folder (like in src/app/) are not publicly accessible.
+Only use the assets folder for public files.
+index.html is injected with styles and scripts automatically during the build process.
+Global styles go in styles.css, component-specific styles go in the respective component's .css file.
+Let me know if you'd like more details on any of these points!

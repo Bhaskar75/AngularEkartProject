@@ -1,0 +1,91 @@
+
+1. Bootstrapping in Angular refers to the process of initializing or loading the application.
+2. Every web application, including Angular apps, needs a starting point.
+3. In an Angular application, the `index.html` file is the first page that loads in the browser.
+4. When an Angular project starts, it first loads the `index.html` file.
+
+
+1. In the `index.html` file of an Angular app, there are no explicit JavaScript files or stylesheets linked.
+2. The body of the `index.html` contains the `<app-root>` tag.
+3. The `<app-root>` tag is a custom element that Angular uses as the entry point for rendering content.
+4. Angular determines what to load in place of `<app-root>`.
+5. The `ng serve` command builds the Angular application but does not save the compiled files to disk.
+
+1. The compiled application is saved in memory when using `ng serve` and starts the development server.
+2. The `ng serve` command watches over the project for changes.
+3. If changes are made to the application, it will automatically recompile and update the files.
+4. To view the compiled application, the Angular project needs to be built.
+5. When opening the `index.html` file, there are no references to JavaScript or CSS files in the body section.
+6. The body of the `index.html` file contains only the `<app-root>` tag, without any references to JavaScript files or stylesheets.
+
+1. To stop the Angular CLI process, press `Ctrl + C` in the command prompt.
+2. Use the `ng build` command instead of `ng serve` to compile the project and generate the bundles on disk.
+3. The `ng build` command compiles the application and saves the output in the `dist/` folder.
+4. Bundles like JavaScript and CSS are injected into the `index.html` file located in the `dist/` folder.
+5. Unlike `ng serve`, `ng build` allows you to view the actual compiled files on disk, not just in memory.
+
+
+1. Run the `ng build` command to build the Angular project.
+2. After the build is complete, a new folder (e.g., `dist/test`) is created in the project directory.
+3. Inside this folder, the `index.html` file will contain the injected script references.
+4. The script files (e.g., JavaScript bundles) are now visible in the `index.html` file after the build.
+5. There are five script files typically injected, which can be formatted into separate lines for better readability in the file.
+
+Here are the important points in numbering format:
+Here are the important points in numbering format:
+
+1. Running the `ng build` command builds the Angular project and generates the output files.
+2. After the build is complete, a new folder (e.g., `dist/test`) is created in the project directory.
+3. Inside the `test` folder, the `index.html` file contains the injected script references.
+4. There are five script files injected into `index.html`, which are:
+   - `runtime.js`: This is the webpack runtime file.
+   - `polyfills.js`: A script that provides polyfills for supporting modern JavaScript in older browsers.
+   - `main.js`: The compiled code of the Angular application.
+5. The script files are injected automatically after the build and can be formatted into separate lines for readability.
+
+Here are the important points in numbering format:
+
+1. Angular applications are written in TypeScript, but when compiled, the TypeScript code is converted into JavaScript.
+2. The `main.js` file contains the compiled JavaScript code of the application.
+3. The `vendor.js` file, injected by the Angular CLI, contains scripts from the Angular core library and other third-party libraries used in the application.
+4. The `style.css` file is bundled into JavaScript code before being injected into the `index.html` file.
+5. In the web page's source, you will see references to `runtime.js`, `polyfills.js`, and `styles.js`, indicating that the CSS has been converted to JavaScript and injected.
+6. The Angular CLI uses Webpack as a module bundler to handle the bundling of JavaScript, CSS, and other assets in the application.
+
+Here are the important points in numbering format:
+
+1. Webpack scans the Angular application for JavaScript files and merges them into one or more JavaScript bundles.
+2. Webpack can bundle various file types, including JavaScript, CSS, images, HTML, etc.
+3. The Angular CLI uses Webpack as the module bundler to handle these tasks.
+4. Webpack requires many configuration options to function correctly, but the Angular CLI sets these up behind the scenes, so developers don't need to manage them manually.
+5. In an Angular application, Webpack traverses through the codebase to locate JavaScript and other files, creating the necessary bundles.
+6. In the example application, Webpack created five bundle files.
+7. Once the Angular CLI has created the bundled files, it injects the corresponding JavaScript and CSS files into the `index.html` file.
+8. By the time the `index.html` file loads in the browser, the Angular code libraries and any third-party libraries are already loaded, thanks to the bundling process.
+
+Here are the important points in numbering format:
+
+1. The bundled JavaScript and CSS files have been injected into the `index.html` file and are already loaded in the browser.
+2. Angular needs to locate the entry point of the application, similar to the main method in many programming languages.
+3. The entry point for an Angular application is specified in the `angular.json` file.
+4. The `angular.json` file contains configurations that help Angular determine the main entry point for the application. 
+5. This configuration allows Angular to identify which file should be executed first when the application loads.
+
+1. In `angular.json`, the `Main` option specifies the file path of the `main.ts` file, which is the main entry point of the Angular application.
+2. When the Angular application loads, the first file executed is `main.ts`.
+3. The `main.ts` file imports the `platformBrowserDynamic` module, which is responsible for loading the Angular application in the desktop's browser.
+4. Angular applications can be bootstrapped in various platforms, such as using `platformNativeScriptDynamic` for mobile devices (with NativeScript), but here, `platformBrowserDynamic` is used for browser-based applications.
+5. The `main.ts` file also imports the `AppModule` class, which is the root module of the Angular application.
+6. Angular applications are organized into modules, and every Angular application must have at least one root module.
+7. The `bootstrapModule` function in `main.ts` loads the root module (`AppModule`) to start the application.
+8. The `AppModule` class is decorated with the `@NgModule` decorator, which passes a metadata object containing properties like `declarations`, `imports`, `providers`, and `bootstrap`.
+9. The `declarations` array in `@NgModule` contains components, directives, and pipes belonging to the module.
+10. The `imports` array lists external modules required by the Angular application.
+11. The `providers` array registers services for the Angular application.
+12. The `bootstrap` array specifies the component(s) that Angular should load when the `AppModule` is loaded (in this case, the `AppComponent`).
+13. The `AppComponent` is decorated with the `@Component` decorator, which includes a metadata object with properties like `selector`, `templateUrl`, and `styleUrls`.
+14. The `selector` property of the `AppComponent` specifies the HTML element (`<app-root>`) where the component will be rendered.
+15. The view template for `AppComponent` is defined using the `templateUrl` property, which points to `app.component.html`.
+16. Wherever the `<app-root>` element is used in the `index.html` file, the content of the `app.component.html` view template will be rendered.
+17. Once Angular determines what to render in place of `<app-root>`, it completes the bootstrapping process, and the `index.html` file is rendered in the browser, displaying the UI.
+

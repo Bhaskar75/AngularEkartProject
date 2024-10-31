@@ -1,0 +1,68 @@
+As i am using angular 18 , in angular 18 app.module.ts file has been removed can be kept but now its optional,
+ so to declare a new component class and to use it declare it in app.component.ts.
+
+
+Here are the important points from the lecture on components in Angular, listed in numbering format:
+
+1. Angular is a component-based JavaScript framework used for building client-side applications.
+
+2. A component is a small piece of a user interface in an Angular application.
+
+3. Angular applications are built by combining multiple independent components to create a complex user interface.
+
+4. Every Angular application has at least one component called the root component (often named "app component" by convention).
+
+5. The root component represents the entire application and contains other child components.
+
+6. In Angular, an application is essentially a tree of components.
+
+7. To visually understand components, an application can be split into separate UI parts such as a header, main content area, sidebar, and footer.
+
+8. Each UI part (header, navbar, menu items, sidebar sections, etc.) can be an independent component, allowing developers to work on them individually.
+
+9. The app component is the root component and serves as the parent for other components like header, navbar, main content, sidebar, and footer.
+
+10. The main component can also have child components such as a cover image, main content, and subscribe button.
+
+11. Angular uses a parent-child relationship between components.
+
+12. Creating and using a component requires three steps:
+   - Creating a TypeScript class and exporting it.
+   - Decorating the TypeScript class with the `@Component` decorator.
+   - Declaring the class in the main module file.
+
+13. To create a new component, go to the source folder and then the app folder, where the root component (app component) is located.
+
+14. Conventionally, the child component should be placed inside the parent component's folder.
+
+15. A component is essentially a TypeScript class, and a folder is created with the name of the component.
+
+16. The component's TypeScript file is named as `component-name.component.ts`.
+
+17. To make a TypeScript class a component, decorate it with the `@Component` decorator.
+
+18. Import the `@Component` decorator from the `@angular/core` library.
+
+19. The decorator requires a metadata object with properties such as `selector` and `template`.
+
+20. Every component must have a view template, which can be specified using the `template` or `templateUrl` property.
+
+21. The `selector` is typically prefixed with `app-` followed by the component name.
+
+22. The template property can contain HTML as a string, representing the view template.
+
+23. Once the component is created, Angular must be informed of its existence by declaring it in the main module file.
+
+24. To declare the component, import it into the main module file and add it to the `declarations` array.
+
+25. The selector for the component is then used as an HTML element in the template of the parent component.
+
+26. The component’s HTML, as defined in the template property, will be rendered in the browser.
+
+27. If a view template is not specified, Angular will show an error, indicating that every component needs a view template.
+
+28. The `@Component` decorator specifies the `selector` and `template`, making it recognizable to Angular.
+
+29. The `declarations` array in the module class registers the component so that Angular is aware of it.
+
+30. This is the process of creating and using a component in Angular.

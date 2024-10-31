@@ -1,0 +1,30 @@
+Certainly! Here are the important points in a numbered format:
+
+1. **Component-specific vs. Global Styles**:
+   - Styles defined in a component (`styles` or `styleUrls`) only apply to that specific component.
+   - Global styles, which apply to all components, can be defined in `styles.css`.
+
+2. **Global Styling with `styles.css`**:
+   - Found in the `src` folder, `styles.css` allows defining CSS styles applied to all HTML elements and components in the Angular application.
+
+3. **Applying Global Styles**:
+   - To set margin, padding, and box-sizing for all elements, use `* { margin: 0; padding: 0; box-sizing: border-box; }` in `styles.css`.
+   - Body styles, such as `font-family`, can be set here to apply globally.
+
+4. **Adding Google Fonts**:
+   - Import Google fonts by copying the `@import` link from Google Fonts and pasting it at the top of `styles.css`.
+   - Define fonts for specific elements by using CSS selectors, e.g., setting the font family for `body`.
+
+5. **Custom Font for Logo Text**:
+   - Import a custom font for specific uses, like the logo text, by adding the font to `styles.css` and applying it via CSS classes, like `ecart-logo`.
+
+6. **Font Awesome for Icons**:
+   - Import Font Awesome by obtaining the CDN link and adding it to `styles.css`.
+   - Once imported, Font Awesome icons can be used across the entire application.
+
+7. **Impact of Global Styling**:
+   - Any style defined in `styles.css` affects all components and HTML elements.
+   - `styles.css` is ideal for reusable fonts, icons, and layout styles applied throughout the app.
+
+8. **Application Example**:
+   - With these imports in place, elements like buttons and icons display consistently across the app, and the logo text styling reflects the global font setup.

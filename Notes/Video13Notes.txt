@@ -1,0 +1,71 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: '.top-header',
+  //selector: 'top-header', //Treats the selector as a custom HTML element.
+  //selector: '[top-header]',//Treats the selector as an attribute applied to an existing HTML element.
+  //selector: '.top-header',// Treats the selector as a class applied to an existing HTML element.
+  standalone: true,
+  imports: [],
+  templateUrl: './top-header.component.html',
+  styleUrl: './top-header.component.css'
+})
+export class TopHeaderComponent {
+
+}
+
+Here are the detailed points from the lecture:
+
+### 1. **Different Ways to Use a Component Selector**:
+   - In Angular, a component selector can be used in multiple ways:
+      - **As an HTML tag**: This is the most common usage for Angular components, where the selector is used as a standalone HTML element.
+      - **As an HTML attribute**: Here, the component selector is applied as an attribute on an existing HTML element.
+      - **As a CSS class**: The selector can be applied as a CSS class on any HTML element.
+      - **As an ID**: The selector can also be used as an ID on an HTML element, though this is less common.
+
+### 2. **Using Selector as an HTML Attribute**:
+   - **Defining Selector in Component File**:
+      - To enable a component selector to be used as an HTML attribute, wrap the selector value in square brackets (`[ ]`) in the component’s metadata (in the `@Component` decorator in the `.ts` file).
+      - For example, to use `top-header` as an attribute selector, define it as `selector: '[top-header]'`.
+   - **Applying in HTML**:
+      - In the HTML template (e.g., `app.component.html`), create an HTML element, such as `<div>`, and add the selector as an attribute on that element, like so: `<div top-header></div>`.
+      - This tells Angular to render the component’s view template inside the specified HTML element, so `<div top-header></div>` will display the component’s content inside that div.
+   - **Inspecting in Developer Tools**:
+      - When using the component as an attribute, there will no longer be a `top-header` HTML tag in the DOM. Instead, you’ll see a `div` tag with the `top-header` attribute and the component’s HTML inside that div.
+
+### 3. **Using Selector as a CSS Class**:
+   - **Defining Selector in Component File**:
+      - To use a selector as a CSS class, define it in the component file by prefixing the selector name with a dot (`.`) in the `@Component` decorator, like `selector: '.top-header'`.
+   - **Applying in HTML**:
+      - In the HTML file, create an HTML element and add the selector as a CSS class. For example: `<div class="top-header"></div>`.
+      - This tells Angular to treat the `top-header` CSS class as a reference to the component, rendering the component’s HTML content inside the div with the `top-header` class.
+   - **Inspecting in Developer Tools**:
+      - When inspecting the element in the browser’s developer tools, you’ll see the class assigned to the HTML element, and inside it, you’ll find the rendered content of the component.
+
+### 4. **Using Selector as an ID**:
+   - **Defining Selector in Component File**:
+      - To use a selector as an ID, add a pound sign (`#`) before the selector name in the `@Component` decorator, like so: `selector: '#top-header'`.
+   - **Applying in HTML**:
+      - In the HTML file, create an HTML element, such as a div, and set the `id` attribute to the selector’s name, like so: `<div id="top-header"></div>`.
+      - Angular will render the component’s HTML template inside the element with the matching ID.
+   - **Inspecting in Developer Tools**:
+      - You’ll see the `div` element with an `id` of `top-header`, and inside it, the component’s HTML content.
+
+### 5. **Common Usage Patterns in Angular**:
+   - **HTML Tag Selector (Default)**:
+      - The default and most common way to use Angular component selectors is as custom HTML tags. This approach is direct, improves readability, and visually represents the component structure in HTML.
+      - It also makes the components reusable across different templates.
+   - **Attribute Selectors for Directives**:
+      - Using attribute selectors is most common for Angular directives, which are classes that add behavior to existing elements rather than encapsulating separate components.
+      - Directives are commonly used for functionalities like changing the appearance, adding interactivity, or manipulating the DOM based on conditions.
+      - By setting the selector as an attribute, Angular allows the directive to be applied to any HTML element, making it versatile.
+
+### 6. **Reverting to an HTML Tag Selector**:
+   - To use the selector as an HTML tag (which is typical for Angular components), simply remove any square brackets, dots, or pound signs from the selector name in the component metadata.
+   - For example, `selector: 'top-header'` can be used directly as `<top-header></top-header>` in HTML.
+   - This is often the clearest and most straightforward way to add components, especially for building layouts with multiple reusable components.
+
+### 7. **Preparing for Directives**:
+   - Attribute selectors are particularly useful for creating Angular directives, which will be covered in later lessons.
+   - Using the selector as an attribute will be valuable for directives, where they can dynamically change the behavior or appearance of existing elements without changing their structure.
+
