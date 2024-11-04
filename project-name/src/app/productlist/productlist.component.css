@@ -1,0 +1,9 @@
+.ekart--product--container {
+  padding: 10px 30px;
+  /* 10px is top bottom and 20 px is left right */
+}
+
+button {
+  padding: 5px 10px;
+  margin: 0px 5px;
+}
