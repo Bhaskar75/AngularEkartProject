@@ -39,4 +39,10 @@ export class ProductlistComponent {
       this.addToCart++;
     }
   }
+
+  searchText:string = ' ';
+
+  setSearchText(event: any): void{
+      this.searchText = event ;
+  }
 }

@@ -1,0 +1,23 @@
+<div class="container my-3">
+  <div class="filter-container d-flex align-items-center">
+    <span class="font-weight-bold mr-3">Filter:</span>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="filter" id="filterAll" value="All"
+        [(ngModel)]="selectedFilterRadoButton" (change)="OnselectedFilterRadioButtonChanged()">
+      <label class="form-check-label" for="filterAll">{{'All ('+all+')'}}</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="filter" id="filterFree" value="true"
+        [(ngModel)]="selectedFilterRadoButton" (change)="OnselectedFilterRadioButtonChanged()">
+      <label class="form-check-label" for="filterFree">{{'In Stock ('+inStock+')'}}</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="filter" id="filterPremium" value="false"
+        [(ngModel)]="selectedFilterRadoButton" (change)="OnselectedFilterRadioButtonChanged()">
+      <label class="form-check-label" for="filterPremium">{{'Out Of Stock ('+outOfStock+')'}}</label>
+    </div>
+  </div>
+</div>

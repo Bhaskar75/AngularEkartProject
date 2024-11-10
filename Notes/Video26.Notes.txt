@@ -1,0 +1,44 @@
+Here are the important points from this lecture:
+
+1. **Creating a New Child Component**:
+   - Inside the `product-list` component, a new child component called `filter` was created using the command:
+     ```bash
+     ng generate component filter
+     ```
+   - After generation, unnecessary files like the `spec.ts` file were removed.
+
+2. **Using the Filter Component**:
+   - The filter component’s selector (e.g., `<app-filter>`) was added to the `product-list.component.html` file.
+   - HTML and CSS were customized in `filter.component.html` and `filter.component.css` to display three radio buttons for filtering products.
+
+3. **Radio Button Labels and Binding**:
+   - Radio buttons were modified to represent "In Stock" and "Out of Stock" status.
+   - Boolean values (`true` for "In Stock" and `false` for "Out of Stock") were set for the filtering options.
+
+4. **Setting up Properties in the Child Component**:
+   - Three properties (`all`, `inStock`, and `outOfStock`) were created in `filter.component.ts` to hold counts of products.
+   - String interpolation was used in `filter.component.html` to display these counts.
+
+5. **Receiving Data from the Parent Component Using `@Input`**:
+   - To receive data from the `product-list` parent component, the properties in `filter.component.ts` were decorated with the `@Input` decorator.
+   - Importing and using `@Input` allows properties in the child component to receive values from the parent component.
+
+6. **Custom Property Binding**:
+   - Property binding was used in `product-list.component.html` to pass values from the parent to the child component.
+   - Example:
+     ```html
+     <app-filter [all]="totalProdCount" [inStock]="totalProdInStock" [outOfStock]="totalProdOutOfStock"></app-filter>
+     ```
+
+7. **Calculating Product Counts in the Parent Component**:
+   - Three properties were created in `product-list.component.ts` to calculate:
+     - Total product count (`totalProdCount`)
+     - Products in stock (`totalProdInStock`) using a filter method with `isInInventory === true`
+     - Products out of stock (`totalProdOutOfStock`) using a filter method with `isInInventory === false`
+
+8. **Custom Property Binding and `@Input` Summary**:
+   - Custom property binding is used to bind component properties to TypeScript expressions.
+   - The `@Input` decorator is essential for passing data from a parent to a child component.
+   
+9. **Next Steps**:
+   - The next lecture will cover passing data from the child component back to the parent using custom event binding.

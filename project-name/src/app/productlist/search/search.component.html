@@ -2,7 +2,7 @@
   <div class="card p-3" style="max-width: 500px; width: 100%;">
     <!-- Search Input Field -->
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search products..." [(ngModel)]="searchText">
+      <input type="text" class="form-control" placeholder="Search products..." [(ngModel)]="searchText" (input)="onSearchTextChanged()">
       <button class="btn btn-primary"
               [ngClass]="{'btn-search': searchText, 'btn-search-disabled': !searchText}"
               [disabled]="!searchText">

@@ -1,0 +1,76 @@
+.ekart--product--item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 200px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.ekart--product--item:hover {
+  transform: scale(1.05);
+}
+
+.ekart-wishlist-sale-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.ekart--add--to--wishlist i {
+  color: #ff6666;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.ekart-on-sale-tag {
+  background: #ff6666;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.ekart--product--image {
+  margin-top: 24px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.ekart--product--image-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.ekart--product--details {
+  margin-top: 12px;
+}
+
+.ekart--product--price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.ekart--product--name {
+  font-size: 16px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.ekart--product--category,
+.ekart--product--in--stock
+.ekart--product--available-colors {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+
+

@@ -1,0 +1,21 @@
+This lecture from the Angular course on YouTube provides an in-depth explanation of custom property binding using the `@Input` decorator, which is crucial for establishing parent-to-child data communication in Angular components. The instructor demonstrates the process of creating a new Angular component (`Product`), moving HTML content from an existing component (`ProductList`), and setting up the `@Input` decorator to enable property binding.
+
+### Key Steps and Highlights
+
+1. **Component Creation**: A new `Product` component is created to represent a single product item. This is done using the `ng generate component` command within the `product-list` folder.
+
+2. **Moving HTML Structure**: The product display HTML is moved from `ProductListComponent` to `ProductComponent`. The `ngFor` directive is removed from the `ProductComponent` HTML, as the iteration will now happen in the `ProductListComponent`.
+
+3. **Setting Up `@Input` Property**: In `ProductComponent`, a property named `product` is defined and decorated with `@Input` to enable it to receive data from its parent component. The decorator is imported from `@angular/core`.
+
+4. **Defining Data Types**: Initially, the `product` property is assigned an anonymous type, defining expected attributes (e.g., `id`, `name`). Later, these types are updated to match the properties required by the component, and the `discountPrice` property is marked as optional.
+
+5. **Binding Data to Child Component**: In the `ProductListComponent` HTML, the `ProductComponent` selector (`app-product`) is used within an `ngFor` directive. The `product` property in `ProductComponent` is bound to each item in the `products` array via property binding.
+
+6. **Error Handling**: The course addresses compiler errors by updating the `tsconfig.json` file to disable strict checking temporarily, allowing type mismatches to be resolved.
+
+7. **Final Styling and Display**: After confirming functionality, the instructor revisits the CSS file to ensure proper styling for each product entry.
+
+### Outcome
+
+This process enables `ProductListComponent` to pass data to each instance of `ProductComponent`, displaying individual product details while keeping component logic modular and organized. This setup is crucial in larger Angular applications for effective data management between parent and child components using Angular’s property binding features.

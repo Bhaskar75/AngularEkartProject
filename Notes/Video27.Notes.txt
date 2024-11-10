@@ -1,0 +1,17 @@
+Yeh raha Angular project mein filter functionality ki vistrit vivaran:
+Filter Component
+
+1) Radio Buttons: "All", "In Stock", aur "Out of Stock" filters ke liye radio buttons hote hain.
+2) Product Count: Har category mein products ki count dikhayi deti hai.
+3)Two-Way Binding: [(ngModel)] selectedFilterRadioButton property ko update karta hai.
+4) Emit Event: onSelectedFilterRadioButtonChanged method parent component ko selection emit karti hai.
+
+Parent Component
+5) Filter Change Capture: onFilterChanged method filter change ko capture karta hai.
+6) Update Property: selectedFilterRadioButton property ko update karta hai.
+7) Conditional Display: *ngIf directive product list mein dynamically control karta hai.
+8) Product Filtering: Har product ki is_in_inventory status ko selected filter value se compare kiya jata hai.
+
+Parinaam
+1) Dynamic Filtering: Users apne chune hue filter ke aadhar par update product display dekh sakte hain.
+2) Efficient Filtering: In-stock, out-of-stock, ya sabhi products ka filtering kiya ja sakta hai.
