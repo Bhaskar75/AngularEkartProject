@@ -1,24 +1,32 @@
-<div class="ekart--product--item">
-  <div class="ekart-wishlist-sale-container">
-    <div class="ekart--add--to--wishlist">
+<div class="ekart-product-item">
+  <div class="ekart-product-badge-container">
+    <!-- Wishlist Icon -->
+    <button class="wishlist-btn">
       <i class="fa fa-heart-o" aria-hidden="true"></i>
-    </div>
-    <div class="ekart-on-sale-tag" *ngIf="product.disc_price">{{ (100-(product.disc_price/product.price*100)).toFixed(0)}}% OFF</div>
+    </button>
 
+    <!-- Sale Tag -->
+    <span class="ekart-sale-tag" *ngIf="product.disc_price">
+      {{ (100 - (product.disc_price / product.price * 100)).toFixed(0) }}% OFF
+    </span>
   </div>
-  <div class="ekart--product--image">
-    <!-- //below is the example of property binding keep the src in square brackets -->
-    <img [src]="product.imageURL" class="ekart--product--image-img" alt="{{product.name}}">
-  </div>
-  <div class="ekart--product--details">
-    <!-- //below is the example of string interpolation keep the src in square brackets -->
-    <div class="ekart--product--price">{{product.price}}</div>
-    <div class="ekart--product--name">{{product.name}}</div>
-    <div class="ekart--product--category">{{product.gender}} | {{product.category}} | {{product.brand}}</div>
-    <div class="ekart--product--available-colors">{{product.color.length}} Colors • Best Seller</div>
-    <div class="ekart--product--available-colors">{{ product.color.length}} Colors. Best
-    <div class="ekart--product--in--stock" [ngStyle]="{ 'font-weight': 'bold', 'color': product.is_in_inventory ? 'green' : 'red' }">
-        {{ product.is_in_inventory ? 'In Stock' : 'Unavailable' }}
-    </div>
 
+  <!-- Product Image -->
+  <div class="ekart-product-image">
+    <img [src]="product.imageURL" [alt]="product.name" class="ekart-product-image-img">
+  </div>
+
+  <!-- Product Details -->
+  <div class="ekart-product-details">
+    <div class="ekart-product-price">₹{{ product.price}}</div>
+    <h2 class="ekart-product-name">{{ product.name }}</h2>
+    <p class="ekart-product-category">
+      {{ product.gender }} | {{ product.category }} | {{ product.brand }}
+    </p>
+    <p class="ekart-product-colors">{{ product.color.length }} Colors • Best Seller</p>
+    <span class="ekart-product-stock"
+      [ngStyle]="{'in-stock': product.is_in_inventory, 'out-of-stock': !product.is_in_inventory}">
+      {{ product.is_in_inventory ? 'In Stock' : 'Unavailable' }}
+    </span>
+  </div>
 </div>
