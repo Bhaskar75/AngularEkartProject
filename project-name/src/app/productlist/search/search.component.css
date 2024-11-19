@@ -1,35 +1,55 @@
-.ekart--search--product{
-margin: 20px auto;
-text-align: center;
+.container {
+  font-family: 'Arial', sans-serif;
 }
-.ekart-search-product-input{
-width: 40%;
-height: 5.5vh;
-padding: 1px 10px;
-outline: none;
-border-radius: 2px;
-background-color: #efefef;
-border: #28282B 1px solid;
+
+.card {
+  border: none;
+  background-color: #ffffff;
 }
-.btn{
-padding: 5px 10px;
-border: none;
+
+.ekart-search-product-input {
+  height: 45px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ced4da;
+  padding: 0 15px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
 }
-.btn-search{
-padding: 12px 30px;
-background-color: #2328282B;
-margin-left: -5px;
-color:#fff;
+
+.ekart-search-product-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  outline: none;
 }
-.ekart-search-result-for{
-margin: 20px auto;
-padding: 10px 140px;
+
+.btn-search {
+  background-color: #007bff;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
-.btn-search-disabled{
-  padding: 12px 30px;
-  background-color: #aaa;
-  margin-left: -1px;
+
+.btn-search:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 6px rgba(0, 91, 179, 0.4);
+}
+
+.btn-search-disabled {
+  background-color: #d6d6d6;
   color: #999;
-  border: #aaa 1px solid;
+  border: none;
   cursor: not-allowed;
+}
+
+.ekart-search-result-for {
+  text-align: center;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.text-primary {
+  color: #007bff !important;
 }
