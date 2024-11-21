@@ -1,9 +1,10 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { NgStyle } from '@angular/common';
 import { ProductComponent } from './product/product.component';
 import { FilterComponent } from './filter/filter.component';
+import { Product } from '../../Models/Product';
 
 @Component({
   selector: 'product-list-new',
@@ -13,6 +14,7 @@ import { FilterComponent } from './filter/filter.component';
   styleUrl: './product-list-new.component.css',
 })
 export class ProductListNewComponent {
+  selectedProduct: Product;
   products = [
     {
       id: 1,
@@ -204,6 +206,5 @@ export class ProductListNewComponent {
   }
 
   @Input()
-  searchText:string='';
-
+  searchText: string = '';
 }

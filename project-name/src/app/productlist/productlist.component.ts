@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { SearchComponent } from './search/search.component';
 import { NgFor } from '@angular/common';
 import { ProductListNewComponent } from "./product-list-new/product-list-new.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 @Component({
   selector: 'product-list',
   standalone: true,
-  imports: [SearchComponent, NgFor, ProductListNewComponent],
+  imports: [SearchComponent, NgFor, ProductListNewComponent, ProductDetailComponent],
   templateUrl: './productlist.component.html',
   styleUrl: './productlist.component.css',
 })

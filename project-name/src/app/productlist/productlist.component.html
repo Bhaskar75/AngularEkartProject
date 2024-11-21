@@ -21,5 +21,6 @@
         <p>Current element of array is {{item}}</p>
   </div> -->
   <app-search (SearchTextChanged)="setSearchText($event)"></app-search>
-  <product-list-new [searchText]="searchText"></product-list-new>
+  <product-list-new [searchText]="searchText" #productListNewComponent></product-list-new>
+  <app-product-detail *ngIf="productListNewComponent.sele"></app-product-detail>
 </div>
