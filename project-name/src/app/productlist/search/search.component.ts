@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Output, ViewChild,ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
@@ -13,12 +13,18 @@ import { NgClass } from '@angular/common';
 export class SearchComponent {
   searchText: string = '';
 
+
+
   //Create an event
   @Output()
   SearchTextChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  updateSearchText(inputEL:HTMLInputElement) {
-      this.searchText = inputEL.value;
+  @ViewChild('searchInput',{static:true}) searchInputEl: ElementRef;
+  //@ViewChild('searchInput',{static:false}) searchInputEl: ElementRef; => Search Input element will not be assigned initially
+  //whwnever there will be any change only then it will be valled
+
+  updateSearchText() {
+      this.searchText = this.searchInputEl.nativeElement.value;
       this.SearchTextChanged.emit(this.searchText);
       //alert(inputEL.value);
   }

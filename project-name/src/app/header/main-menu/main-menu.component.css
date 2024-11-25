@@ -5,7 +5,8 @@
   font-family: 'Montserrat', sans-serif;
   font-weight:normal;
   font-size: 14px;
-  width:70%;
+  width:100%;
   text-align: center;
+  display: flex;
 }
 
