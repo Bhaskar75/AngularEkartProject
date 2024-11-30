@@ -45,7 +45,7 @@ export class ProductListNewComponent {
       size: [6, 7, 8, 9, 10],
       color: ['White', 'Blue', 'Black'],
       price: 130,
-      is_in_inventory: true,
+      is_in_inventory: false,
       items_left: 5,
       imageURL:
         'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-6f2e2c97-2b0b-4fcd-a5f4-55c8cfe923bb/react-miler-mens-running-shoe-nXG4ZC.jpg',
