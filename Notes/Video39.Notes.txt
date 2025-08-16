@@ -1,0 +1,49 @@
+Angular lifecycle hooks are special methods that Angular calls at various stages of a component or directive’s life (creation, update, destroy).
+
+Change detection is Angular’s system to keep the view (DOM) updated with changes in component class properties.
+
+Change detection runs after:
+
+Any input property changes,
+
+Any DOM event (like click, change, etc.),
+
+Timer events (setTimeout, setInterval),
+
+HTTP requests, and more.
+
+The constructor runs when a component is created (it is a JavaScript feature, not an Angular lifecycle hook).
+
+At constructor time, input properties are not set and child components/projected content are not available.
+
+ngOnChanges is the first Angular lifecycle hook that runs after a component is created and its input properties are initialized.
+
+ngOnChanges is also called every time an input property changes (when updated by the parent component).
+
+ngOnChanges is not called if the value of an input property does not change (change detection compares old and new values).
+
+To use ngOnChanges, you can:
+
+Implement the OnChanges interface (recommended).
+
+Use the method signature: ngOnChanges(changes: SimpleChanges).
+
+The changes object contains info about previous and current values for changed inputs.
+
+Example in use:
+
+If a parent updates an @Input() property (message), ngOnChanges fires.
+
+Typing a new value and clicking submit triggers the hook (if the value changed).
+
+Clicking submit without changing the value does not trigger ngOnChanges.
+
+Summary:
+
+ngOnChanges is triggered:
+
+On component initialization (when input property is set),
+
+On every change to input property,
+
+Not triggered if input property value stays the same.

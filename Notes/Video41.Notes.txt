@@ -1,0 +1,43 @@
+Here’s a summarized list of key points about the `ngDoCheck()` lifecycle hook in Angular:
+
+---
+
+### 🔁 **ngDoCheck() Lifecycle Hook – Summary Points**
+
+1. **Position in Lifecycle**
+
+   * Called **after `ngOnChanges()`** and **`ngOnInit()`**.
+   * It’s the **third** lifecycle hook in the Angular component lifecycle.
+
+2. **When It Is Called**
+
+   * Called **on every change detection cycle**, even if no actual data has changed.
+   * Will run on:
+
+     * User events like `click`, `focus`, etc.
+     * Timer events or manual triggering of change detection.
+
+3. **Purpose & Use Cases**
+
+   * Used to implement **custom change detection logic**.
+   * Useful when Angular **fails to detect changes** in `@Input()` properties.
+   * Can be used to **run logic repeatedly** whenever Angular runs change detection.
+
+4. **Difference from `ngOnChanges()`**
+
+   * `ngOnChanges()` runs **only when `@Input` value actually changes**.
+   * `ngDoCheck()` runs **even if value doesn’t change**, just due to change detection.
+
+5. **Example Behavior**
+
+   * Clicking a button (even if it does nothing) triggers `ngDoCheck()`.
+   * Focusing an input field also triggers `ngDoCheck()` due to the event.
+
+6. **Implementation Notes**
+
+   * Requires importing and implementing the `DoCheck` interface.
+   * Used with the `@Input()` properties when default change detection is insufficient.
+
+7. **Debugging Tip**
+
+   * You can place `console.log()` inside `ngDoCheck()` to track its calls and observe change detection triggers.

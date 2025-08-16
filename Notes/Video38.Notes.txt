@@ -1,0 +1,95 @@
+🔁 Angular Component Lifecycle — Key Points (Hinglish)
+🔹 Component Initialization & Constructor Call
+Jab Angular app run hoti hai aur koi component selector milta hai, to:
+
+Us component ka class instantiate hota hai.
+
+Constructor call hota hai us class ka.
+
+Example: app-demo selector milega to DemoComponent ka constructor chalega.
+
+Har TypeScript class me ek constructor hota hai:
+
+Agar nahi likha ho to default parameterless constructor hota hai.
+
+AppComponent pehle initialize hota hai, kyunki woh root component hai.
+
+Uske baad hi uske andar jo child component (jaise DemoComponent) hai, woh initialize hota hai.
+
+🔹 Multiple Selector = Multiple Instances
+Agar ek component ka selector multiple baar use karo:
+
+Example: <app-demo></app-demo> 3 baar likha,
+
+To component ke 3 alag instances banenge,
+
+Aur uska constructor 3 baar chalega.
+
+🔹 Constructor ke Time par Input Properties Update Nahi Hoti
+Agar component me koi @Input() property ho:
+
+To uska value parent component se aata hai.
+
+Lekin jab tak constructor call hota hai, uss input property ka updated value available nahi hota.
+
+Example:
+
+ts
+Copy
+Edit
+@Input() message: string = 'hello';
+Constructor ke andar console.log(this.message) kare to hello print hoga.
+
+Parent component se diya hua 'hello world' value baad me assign hota hai.
+
+🔹 Content Projection (ng-content)
+ng-content ka use hota hai parent se content project karne ke liye.
+
+Jab <app-demo> ke andar koi HTML likha ho:
+
+html
+Copy
+Edit
+<app-demo><p>Some HTML</p></app-demo>
+To woh content ng-content se replace hota hai.
+
+Lekin jab constructor call hota hai:
+
+Projected content bhi abhi available nahi hota.
+
+Uska rendering baad me hota hai, ek alag lifecycle phase me.
+
+🔹 Component Destruction
+Jab component DOM se hata diya jata hai, tab hum kehte hain ki component destroy ho gaya.
+
+🔹 Lifecycle Summary
+Angular component creation flow:
+
+AppComponent (root) create hota hai.
+
+Fir uske children create hote hain (DemoComponent etc.)
+
+Angular:
+
+Input properties check karta hai.
+
+Data binding evaluate karta hai.
+
+View render karta hai.
+
+Content project karta hai.
+
+Agar component remove ho jaye, to Angular usse destroy kar deta hai.
+
+🔹 Lifecycle Hooks (Angular ke phases pe react karne ke liye)
+Ye special methods hote hain jo Angular khud call karta hai agar woh component me define ho:
+
+Lifecycle Hook	Kab Call Hota Hai
+ngOnChanges()	Jab input property ka value change hota hai
+ngOnInit()	Jab component initialize hota hai
+ngDoCheck()	Jab change detection chalta hai
+ngAfterContentInit()	Jab projected content render hota hai
+ngAfterContentChecked()	Jab projected content check hota hai
+ngAfterViewInit()	Jab component ka view render hota hai
+ngAfterViewChecked()	Jab view check hota hai
+ngOnDestroy()	Jab component destroy hone wala hota hai

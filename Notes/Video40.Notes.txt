@@ -1,0 +1,121 @@
+# Angular ngOnInit Lifecycle Hook – Detailed Hinglish Explanation
+
+---
+
+## 1. `ngOnInit` kya hai?
+
+* Ye ek lifecycle hook hai jo Angular component ki life mein **sirf ek baar** chalta hai, jab component fully initialize ho chuka hota hai.
+* Isme aap initialization related kaam (jaise API call, data fetch, ya variables set karna) kar sakte ho.
+
+---
+
+## 2. Kab chalta hai `ngOnInit`?
+
+* Jab bhi Angular koi component create karta hai, sabse pehle constructor chalta hai, phir agar koi `@Input` property hai toh `ngOnChanges` chalta hai.
+* Uske baad `ngOnInit` chalta hai.
+* Dhyaan rahe: **Sirf ek baar, component ke life ke start mein hi.**
+* Agar baad mein `@Input` value change ho toh sirf `ngOnChanges` chalega, `ngOnInit` dobara nahi.
+
+---
+
+## 3. Kaise implement karte hain?
+
+* Component class mein `OnInit` interface implement karo aur `ngOnInit()` method likho:
+
+  ```typescript
+  import { Component, OnInit } from '@angular/core';
+
+  export class DemoComponent implements OnInit {
+    ngOnInit() {
+      // Initialization code yahan likho
+    }
+  }
+  ```
+
+---
+
+## 4. Use Case: `ngOnInit` mein kya likhna chahiye?
+
+* Data fetch karna, variable initialize karna, initial API call karna – ye sab cheezein yahan likhna best hai.
+* Jaise:
+
+  ```typescript
+  ngOnInit() {
+    this.getUsersList();
+  }
+  ```
+
+---
+
+## 5. `ngOnInit` vs `ngOnChanges`
+
+* **`ngOnChanges`**: Jab bhi koi `@Input` property ka value ya reference change hota hai, ye chalta hai (baar-baar).
+* **`ngOnInit`**: Sirf first time component load hone par chalta hai (ek hi baar).
+
+### Example
+
+* Jab component first time load hota hai aur parent se input milta hai:
+
+  * Pehle `ngOnChanges` chalega (kyunki input set hua)
+  * Phir `ngOnInit` chalega
+* Uske baad agar input ka value change hua:
+
+  * Sirf `ngOnChanges` chalega, `ngOnInit` nahi
+
+---
+
+## 6. @ViewChild/@ContentChild ka access
+
+* `ngOnInit` ke time pe DOM ya projected content available nahi hota.
+* Agar aap `@ViewChild` ki value `ngOnInit` mein access karoge, toh **undefined** milega.
+* DOM access karna hai toh `ngAfterViewInit()` lifecycle hook use karo.
+
+---
+
+## 7. Input Property Reference Change & Change Detection
+
+* Agar aap input property ko array banate ho aur usko update karte ho (jaise `.push()`), toh Angular ko nahi pata chalega ki input property change hui hai (kyunki reference same hai).
+* `ngOnChanges` tabhi chalega jab **array ka reference change ho** (jaise nayi array assign karo).
+
+### Example:
+
+```typescript
+@Input() items: string[] = [];
+// Parent: [items]="arr"
+arr.push('newItem'); // ngOnChanges nahi chalega
+arr = [...arr, 'anotherItem']; // ngOnChanges chalega
+```
+
+---
+
+## 8. Best Practices
+
+* Initialization logic hamesha `ngOnInit` mein daalo.
+* Input changes handle karne ke liye `ngOnChanges` use karo.
+* DOM ya `@ViewChild` access ke liye `ngAfterViewInit` use karo.
+
+---
+
+## 9. Lifecycle Order (Sequence)
+
+1. **Constructor**
+2. **ngOnChanges** (if any @Input)
+3. **ngOnInit**
+4. **ngAfterContentInit** / **ngAfterViewInit** (for content/view access)
+
+---
+
+## Quick Recap Table
+
+| Lifecycle Hook  | Kab Chalta Hai                   | Use Kaha Karein           |
+| --------------- | -------------------------------- | ------------------------- |
+| Constructor     | Component banate waqt            | Variables init karne mein |
+| ngOnChanges     | Har input property ke change par | Input value observe karne |
+| ngOnInit        | Sirf ek baar, init ke time       | Data fetch, init logic    |
+| ngAfterViewInit | View/DOM create hone ke baad     | @ViewChild, DOM access    |
+
+---
+
+### Short, Easy Explanation
+
+> `ngOnInit` ek aisa lifecycle hook hai jo component banne ke turant baad, sirf ek baar chalta hai. Initialization waale kaam, jaise API call, yahan karo. Agar input value change hui toh `ngOnInit` dobara nahi chalega, sirf `ngOnChanges` chalega. DOM access karna hai toh `ngAfterViewInit` ka use karo.

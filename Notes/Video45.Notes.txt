@@ -1,0 +1,101 @@
+Here are **all the important points** about the **`ngAfterViewChecked`** lifecycle hook in Angular, based on the lecture:
+
+---
+
+🔹 **What is `ngAfterViewChecked`?**
+
+* A lifecycle hook in Angular.
+* Called **after** `ngAfterViewInit`.
+* Triggered after Angular **checks and updates the component’s view and its child components’ views**.
+
+---
+
+🔹 **When is it Called?**
+
+| Scenario                                         | Is `ngAfterViewChecked` Called? |
+| ------------------------------------------------ | ------------------------------- |
+| First change detection cycle after view is ready | ✅ Yes                           |
+| Any subsequent change detection cycle            | ✅ Yes                           |
+| View or child view changes                       | ✅ Yes                           |
+| View does NOT change, but change detection runs  | ✅ Yes                           |
+| Before view is initialized                       | ❌ No                            |
+
+---
+
+🔹 **Key Characteristics**
+
+* Gets called **after `ngAfterViewInit`**.
+* Called **on every change detection cycle** after view is initialized.
+* Called **even if view hasn’t changed**, but a CD cycle occurred (e.g., due to `focus`, `click`).
+* Used to access or respond to view-related changes.
+
+---
+
+🔹 **Interaction with `@ViewChild` and `@ViewChildren`**
+
+* Angular updates `@ViewChild`/`@ViewChildren` **just before** this hook is called.
+* You can access **updated values** of these properties **inside `ngAfterViewChecked`**.
+
+✅ Example:
+
+```ts
+@ViewChild('temp') tempPara: ElementRef;
+```
+
+You can access:
+
+```ts
+this.tempPara.nativeElement.textContent
+```
+
+inside `ngAfterViewChecked`.
+
+---
+
+🔹 **Lifecycle Hook Order**
+
+For a **parent-child component setup**, hooks fire in the following order:
+
+1. Child: All lifecycle hooks (ngOnChanges → ngOnInit → ngDoCheck → ngAfterContentInit → ngAfterContentChecked → ngAfterViewInit → ngAfterViewChecked)
+2. Then parent: `ngAfterViewInit`, `ngAfterViewChecked`
+
+---
+
+🔹 **Use Case Demonstration**
+
+* A component has a paragraph element using a bound variable `message`.
+* On changing input value and submitting, paragraph text changes.
+* Since view changes, `ngAfterViewChecked` gets called again.
+* Even if the input is just focused (not submitted), the CD cycle runs → `ngAfterViewChecked` is still triggered.
+
+---
+
+🔹 **Comparison with Other Hooks**
+
+| Hook                    | Called When?                                                               | Notes                             |
+| ----------------------- | -------------------------------------------------------------------------- | --------------------------------- |
+| `ngDoCheck`             | Every CD cycle (before content/view initialized)                           | Used for custom change detection. |
+| `ngAfterContentChecked` | Every CD cycle **after projected content (`<ng-content>`)** is initialized | Used to act on projected content. |
+| `ngAfterViewChecked`    | Every CD cycle **after view (and child views)** are initialized            | Used to act on view updates.      |
+
+> ❗ Cannot compare old vs. new projected content in `ngDoCheck` → use `ngAfterContentChecked`.
+> ❗ Cannot compare old vs. new view in `ngDoCheck` → use `ngAfterViewChecked`.
+
+---
+
+🔹 **Directive Limitation**
+
+* `ngAfterViewChecked` is a **component-only hook**.
+* **Not available in directives**.
+
+---
+
+🔹 **Summary of Key Differences**
+
+| Feature                   | `ngDoCheck`             | `ngAfterContentChecked`                | `ngAfterViewChecked`                          |
+| ------------------------- | ----------------------- | -------------------------------------- | --------------------------------------------- |
+| Trigger                   | Every CD cycle          | After projected content is initialized | After component + child views are initialized |
+| Usage                     | Custom CD logic         | Monitor projected content              | Monitor view and child views                  |
+| View/Content availability | ❌ (Not initialized yet) | ✅ Projected content available          | ✅ View + child views available                |
+| Suitable for diffing      | ❌                       | ✅ (content diff)                       | ✅ (view diff)                                 |
+

@@ -1,0 +1,119 @@
+Here are **all the important points** about the **`ngOnDestroy`** lifecycle hook in Angular based on the lecture:
+
+---
+
+🔹 **What is `ngOnDestroy`?**
+
+* The **last lifecycle hook** in Angular.
+* Called **just before** a component or directive is **destroyed** (i.e., removed from the DOM).
+* Provided by the `OnDestroy` interface.
+
+---
+
+🔹 **When is it Called?**
+
+| Scenario                                               | Is `ngOnDestroy` Called? |
+| ------------------------------------------------------ | ------------------------ |
+| Component is created and displayed                     | ❌ No                     |
+| Component is removed via `*ngIf` or routing/navigation | ✅ Yes                    |
+| Directive is removed from DOM                          | ✅ Yes                    |
+
+---
+
+🔹 **Typical Use Case**
+
+* Perform **cleanup tasks** such as:
+
+  * Unsubscribing from Observables
+  * Detaching DOM event listeners
+  * Clearing timers (`setInterval`, `setTimeout`)
+  * Releasing memory-heavy resources
+
+✅ Example:
+
+```ts
+ngOnDestroy() {
+  this.subscription.unsubscribe();
+  console.log("Component is being destroyed");
+}
+```
+
+---
+
+🔹 **How to Trigger Destruction (Example Setup)**
+
+* Use `*ngIf` on component selector:
+
+```html
+<app-demo *ngIf="!toDestroy"></app-demo>
+```
+
+* Toggle `toDestroy` using a button:
+
+```html
+<button (click)="destroyComponent()">Show/Hide</button>
+```
+
+* Method in parent (AppComponent):
+
+```ts
+toDestroy = false;
+destroyComponent() {
+  this.toDestroy = !this.toDestroy;
+}
+```
+
+---
+
+🔹 **Lifecycle Order Example**
+
+1. Component created:
+
+   * Constructor
+   * `ngOnChanges`
+   * `ngOnInit`
+   * `ngDoCheck`
+   * `ngAfterContentInit`
+   * `ngAfterContentChecked`
+   * `ngAfterViewInit`
+   * `ngAfterViewChecked`
+2. Component destroyed:
+
+   * `ngOnDestroy` is called just **before** removal from DOM
+
+---
+
+🔹 **Key Characteristics**
+
+* **Last hook to run** in a component/directive lifecycle.
+* **Perfect place for resource cleanup**.
+* Helps prevent **memory leaks** by unsubscribing from observables and detaching handlers.
+* Unlike most hooks, `ngOnDestroy` is also available to **directives**.
+
+---
+
+🔹 **Component Re-Creation After Destruction**
+
+* If the component is re-added (e.g. toggled via `*ngIf`):
+
+  * Constructor and all lifecycle hooks run **again**.
+  * Previous instance is **not reused**.
+  * `ngOnDestroy` of previous instance would have been called.
+
+---
+
+🔹 **Directive vs Component Lifecycle Hooks**
+
+| Lifecycle Hook          | Available in Components | Available in Directives |
+| ----------------------- | ----------------------- | ----------------------- |
+| `ngOnInit`              | ✅ Yes                   | ✅ Yes                   |
+| `ngDoCheck`             | ✅ Yes                   | ✅ Yes                   |
+| `ngAfterContentInit`    | ✅ Yes                   | ✅ No                    |
+| `ngAfterContentChecked` | ✅ Yes                   | ✅ No                    |
+| `ngAfterViewInit`       | ✅ Yes                   | ✅ No                    |
+| `ngAfterViewChecked`    | ✅ Yes                   | ✅ No                    |
+| `ngOnDestroy`           | ✅ Yes                   | ✅ Yes                   |
+
+---
+
+Let me know if you want this lifecycle hook comparison and explanation in **PDF**, **tabular view**, or **visual flowchart**.

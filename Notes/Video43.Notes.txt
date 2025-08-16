@@ -1,0 +1,52 @@
+Here is a **concise summary** of the `ngAfterContentChecked` lifecycle hook in Angular based on the lecture:
+
+---
+
+✅ **What is `ngAfterContentChecked`?**
+
+* A **lifecycle hook** in Angular.
+* Called **after `ngAfterContentInit`**.
+* Triggered **on every change detection cycle**, **after projected content** is initialized, checked, or updated.
+
+---
+
+🔁 **When is it Called?**
+
+| Scenario                                 | Is `ngAfterContentChecked` Called? |
+| ---------------------------------------- | ---------------------------------- |
+| First time after content is projected    | ✅ Yes                              |
+| Every time the projected content updates | ✅ Yes                              |
+| Even if projected content doesn't change | ✅ Yes (due to CD cycle)            |
+| No projected content present             | ✅ Still gets called                |
+
+---
+
+🔍 **Difference from `ngAfterContentInit`**
+
+| Hook Name               | Called When                                          |
+| ----------------------- | ---------------------------------------------------- |
+| `ngAfterContentInit`    | **Only once**, when projected content is initialized |
+| `ngAfterContentChecked` | **Every CD cycle**, after content is checked/updated |
+
+---
+
+🧠 **Technical Insights**
+
+* It behaves **like `ngDoCheck`**, but **only for projected content**.
+* Called **after Angular updates** any `@ContentChild` or `@ContentChildren` properties.
+* Even UI events like `focus` on an input (which trigger CD) will call this hook.
+
+---
+
+⚠️ **Important Notes**
+
+* **Only works in Components**, not in Directives.
+* Angular triggers this hook **even if projected content is empty**.
+
+---
+
+🧪 **Example Use Case Recap**
+
+* A child component with `<ng-content>` projects a `<p>` tag from parent.
+* If parent changes projected content (e.g., input value used inside the `<p>`), this hook detects the change.
+* Each change detection cycle logs updated projected content (e.g., via `@ContentChild`).
