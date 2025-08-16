@@ -1,0 +1,46 @@
+This document is a tutorial on creating custom directives in Angular. Here's a summary:
+
+##Angular Directives Overview
+-Three types: Component, Attribute, and Structural directives
+-Attribute directives: Change appearance/behavior (e.g., ngStyle, ngClass)
+-Structural directives: Add/remove DOM elements (e.g., ngFor, ngIf)
+
+##Creating a Custom Attribute Directive
+
+Step 1: Create the directive file
+- Created `set-background.directive.ts` in `custom-directives` folder
+- Used `@Directive` decorator with attribute selector `[setBackground]`
+
+Step 2: Basic directive structure
+```typescript
+@Directive({
+  selector: '[setBackground]'
+})
+export class SetBackground implements OnInit {
+  constructor(private element: ElementRef) {}
+  
+  ngOnInit() {
+    this.element.nativeElement.style.backgroundColor = 'gray';
+    this.element.nativeElement.style.color = 'white';
+  }
+}
+```
+
+Step 3: Register in app module
+- Added directive to `declarations` array in `app.module.ts`
+
+Step 4: Usage
+```html
+<span setBackground>{{product.gender}}</span>
+<span setBackground>{{product.brand}}</span>
+<span setBackground>{{product.category}}</span>
+```
+
+##Key Concepts Explained
+
+1.Dependency Injection: Angular injects `ElementRef` reference of the HTML element where directive is used
+2.Lifecycle Hooks: Used `ngOnInit` instead of constructor for initialization logic
+3.TypeScript Shortcut: Using `private element: ElementRef` in constructor automatically creates a private property
+4.Multiple Instances: Each usage creates a separate directive instance
+
+The tutorial demonstrates how to dynamically change element styles using custom directives, making the styling more flexible than hard-coded CSS.
