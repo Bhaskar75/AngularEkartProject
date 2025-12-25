@@ -13,10 +13,11 @@
   transition: box-shadow 0.3s ease;
 }
 
+/*
 .ekart-product-item:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Hover effect for box-shadow */
-  transform: scale(1.05);  /* Slight scale effect on hover */
-}
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  Hover effect for box-shadow */
+  /*transform: scale(1.05);  /* Slight scale effect on hover */
+/*}*/
 
 .ekart-product-image {
   text-align: center;
@@ -89,4 +90,12 @@
 
 .out-of-stock {
   color: red;
+}
+
+.highlight-product{
+    -webkit-box-shadow: 0px 0px 1px 3px #000 inset;
+    -moz-box-shadow: 0px 0px 1px 3px #000 inset;
+    border: #efefef 2px solid;
+    box-shadow: 10px 10px 18px #cccccc;
+    transform: scale(1.05);
 }

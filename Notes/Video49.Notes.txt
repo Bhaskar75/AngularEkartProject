@@ -1,0 +1,170 @@
+Here are the **important / exam-ready points** extracted from the lecture, written **clearly and concisely** 👇
+
+---
+
+## 🔑 Key Concepts from the Lecture: **@HostListener in Angular**
+
+---
+
+### 1️⃣ What is **@HostListener**?
+
+* `@HostListener` is an Angular **decorator**
+* It **listens to DOM events** on the **host element**
+* When the event occurs, it **executes an event handler method**
+
+📌 **Host element** = the HTML element where the directive is applied
+
+---
+
+### 2️⃣ Why use **@HostListener**?
+
+* To react to user actions like:
+
+  * `mouseenter`
+  * `mouseout`
+  * `click`
+  * `keydown`
+* Keeps event logic **inside the directive**
+* Avoids adding event bindings directly in templates
+
+---
+
+### 3️⃣ Creating a Custom Directive using Angular CLI
+
+```bash
+ng generate directive highlight
+# or
+ng g d highlight
+```
+
+* Automatically:
+
+  * Creates directive files
+  * Declares the directive in `app.module.ts`
+
+---
+
+### 4️⃣ Directive Selector
+
+```ts
+@Directive({
+  selector: '[appHighlight]'
+})
+```
+
+Usage in HTML:
+
+```html
+<div appHighlight></div>
+```
+
+➡ This `div` becomes the **host element**
+
+---
+
+### 5️⃣ Accessing the Host Element
+
+Use `ElementRef` in the constructor:
+
+```ts
+constructor(private element: ElementRef) {}
+```
+
+* `element.nativeElement` gives access to the host DOM element
+
+---
+
+### 6️⃣ Why use **Renderer2**
+
+```ts
+constructor(
+  private element: ElementRef,
+  private renderer: Renderer2
+) {}
+```
+
+* Safely manipulates the DOM
+* Angular-recommended way to:
+
+  * Add/remove classes
+  * Modify styles
+* Works across platforms (browser, SSR, etc.)
+
+---
+
+### 7️⃣ Listening to Events using **@HostListener**
+
+```ts
+@HostListener('mouseenter')
+onMouseEnter() {
+  // logic here
+}
+
+@HostListener('mouseout')
+onMouseOut() {
+  // logic here
+}
+```
+
+* Listens to events **on the host element**
+* Automatically triggered when event occurs
+
+---
+
+### 8️⃣ Adding CSS Class on Mouse Enter
+
+```ts
+this.renderer.addClass(
+  this.element.nativeElement,
+  'highlight-product'
+);
+```
+
+➡ Zooms/highlights product on hover
+
+---
+
+### 9️⃣ Removing CSS Class on Mouse Out
+
+```ts
+this.renderer.removeClass(
+  this.element.nativeElement,
+  'highlight-product'
+);
+```
+
+➡ Restores original appearance
+
+---
+
+### 🔟 CSS Scope Rule (VERY IMPORTANT)
+
+* CSS written in **one component** is NOT available to another
+* Since directive is used in **ProductComponent**:
+
+  * CSS must be in `product.component.css`
+  * OR in `styles.css` (global)
+
+---
+
+### 1️⃣1️⃣ Final Behavior Achieved
+
+* Mouse enters product → product zooms in
+* Mouse leaves product → product zooms out
+* Achieved **without touching HTML events**
+
+---
+
+## ⭐ One-Line Summary (Interview Ready)
+
+> `@HostListener` listens to DOM events on the host element and executes a corresponding event handler method inside the directive.
+
+---
+
+If you want, I can also:
+
+* Convert this into **bullet notes for exams**
+* Explain **@HostBinding vs @HostListener**
+* Rewrite this as **short revision notes**
+
+Just tell me 👍
